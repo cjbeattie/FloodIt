@@ -20,3 +20,5 @@ Here is a screenshot from the existing Unixpapa game I linked to above:
 - Clicking any "unfillable" cell in the grid turns the "fillable cells" that colour.
 
 ### Other features you plan to implement
+- Supporting a larger grid
+- Styling it possibly using images so that it looks a lot nicer than the original.
