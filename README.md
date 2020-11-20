@@ -12,6 +12,6 @@ Based on this game: https://unixpapa.com/floodit/?sz=14&nc=6
 "Its the MSPaint thing you'd do while bored in computer class where you spraycan a whole bunch of different colors on a page till its all full then use the fill bucket to slowly but surely fill the whole page with one color and they turned it into a game... and I love it!"
 
 ### Your MVP (see below for definition of MVP)
-- Clicking any cell in the grid turns the "active cells" that colour.
+- Clicking any cell in the grid turns the "active cells" that colour (or letters or numbers) with a smaller grid say 3x3.
 
 ### Other features you plan to implement
