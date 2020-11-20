@@ -15,6 +15,8 @@ Here is a screenshot from the existing Unixpapa game I linked to above:
 >![image](https://git.generalassemb.ly/cbeattie/GA_Project1_Game/blob/master/Documentation/Flood-It-Unixpapa-Screenshot.png)
 
 ### Your MVP (see below for definition of MVP)
-- Clicking any cell in the grid turns the "active cells" that colour (or letters or numbers) with a smaller grid say 3x3.
+- Creating the grid (small, e.g. 3x3) and assigning random colours (or letters or numbers)
+- Assigning the top left cells to be "fillable" and the rest to "unfillable"
+- Clicking any "unfillable" cell in the grid turns the "fillable cells" that colour.
 
 ### Other features you plan to implement
