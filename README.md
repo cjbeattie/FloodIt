@@ -3,7 +3,7 @@
 ## Project Title (temporary): Flood-It
 Based on this game: https://unixpapa.com/floodit/?sz=14&nc=6
 
-### Project concept, game play ideas, designs (sketches/screenshots/wireframes if necessary)
+### Project concept
 - The game starts as a 14x14 grid, each cell is randomly coloured one of 6 colours.
 - The user clicks on any cell in the grid. The colour of the cell is applied to the cell at the top-left and any other cells adjacent to it that are the same colour. 
 - Any cells that are adjacent to those recently-coloured cells that are the same colour as the new colour, now are part of the group of cells that will be coloured next time (think of it like the flood paintbucket tool in MS paint).
@@ -14,11 +14,11 @@ Based on this game: https://unixpapa.com/floodit/?sz=14&nc=6
 Here is a screenshot from the existing Unixpapa game I linked to above:  
 >![image](https://git.generalassemb.ly/cbeattie/GA_Project1_Game/blob/master/Documentation/Flood-It-Unixpapa-Screenshot.png)
 
-### Your MVP (see below for definition of MVP)
+### MVP
 - Creating the grid (small, e.g. 3x3) and assigning random colours (or letters or numbers)
 - Assigning the top left cells to be "fillable" and the rest to "unfillable"
 - Clicking any "unfillable" cell in the grid turns the "fillable cells" that colour.
 
-### Other features you plan to implement
+### Other features I plan to implement
 - Supporting a larger grid
 - Styling it possibly using images so that it looks a lot nicer than the original.
