@@ -1,3 +1,23 @@
+/* * {
+    border: 1px solid black;
+} */
+
 body {
-    background-color: red;
+    text-align: center;
+}
+
+#gridContainer {
+    text-align: center;
+    display: inline-block;
+    border: 2px solid black;
+}
+
+.row {
+    height: 20px;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
 }
