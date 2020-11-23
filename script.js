@@ -1,6 +1,6 @@
 const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
 let gridArr = [];
-const gridSize = 6;
+const gridSize = 10;
 let activeColor = "";
 
 const getRandomColor = (colorArr) => {
