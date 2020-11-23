@@ -1,4 +1,4 @@
-const possibleColorsArr = ["red", "green", "blue", "yellow", "orange", "purple"];
+const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
 let gridArr = [];
 const gridSize = 20;
 let clickedColor = "";
@@ -28,6 +28,9 @@ const createGrid = (size) => {
     // Get the top left color
     topLeftColor = gridArr[0][0].css( "background-color" );
     console.log("The top left colour is " + topLeftColor);
+
+    // Make the top left square "fillable"
+    topLeftColor = gridArr[0][0].addClass("fillable");
 }
 
 const renderGrid = (array) => {
@@ -42,10 +45,23 @@ const renderGrid = (array) => {
 const cellClickHandler = (event) => {
     // Get the color of the cell the user just clicked
     clickedColor = event.target.style.backgroundColor;
+    console.log("clicked color:", clickedColor);
+
+    // Update the color of fillable cells
+    $(".fillable").css("background-color", clickedColor);
+
+    // Make neighbouring same-colored cells "fillable"
+    let x = 0;
+    let y = 0;
+    console.log(gridArr[x][y].css("background-color"));
     console.log(clickedColor);
 
-    // Update the top-left cell
-    gridArr[0][0].css("background-color", clickedColor);
+    while (gridArr[x][y].css("background-color") === clickedColor){
+        // loop it in to the fillable cells...
+        gridArr[x][y].addClass("fillable");
+        y++;
+        console.log("y just incremented");
+    }
 
 }
 
