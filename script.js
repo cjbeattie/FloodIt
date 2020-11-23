@@ -1,8 +1,7 @@
 const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
 let gridArr = [];
-const gridSize = 20;
-let clickedColor = "";
-let topLeftColor = "";
+const gridSize = 10;
+let activeColor = "";
 
 const getRandomColor = (colorArr) => {
     let index = Math.floor(Math.random() * colorArr.length)
@@ -28,18 +27,10 @@ const createGrid = (size) => {
     }
 
     // Get the top left color
-    topLeftColor = gridArr[0][0].css("background-color");
-    clickedColor = topLeftColor;
-    console.log("The top left colour is " + topLeftColor);
+    activeColor = gridArr[0][0].css("background-color");
 
-    // Make the top left square "fillable"
-    // topLeftColor = gridArr[0][0].addClass("fillable");
-
-    // Update which cells are fillable
-    updateFillable(0, 0);
-
-    // Reset blockMoreFillables flag
-    $(".blockMoreFillables").removeClass("blockMoreFillables");
+    
+    
 }
 
 const renderGrid = (array) => {
@@ -49,6 +40,11 @@ const renderGrid = (array) => {
             array[i][j].appendTo($($row));
         }
     }
+    // Update which cells are fillable
+    updateFillable(0, 0);
+    console.log("did I get here??");
+    // Reset blockMoreFillables flag
+    $(".blockMoreFillables").removeClass("blockMoreFillables");
 }
 
 
@@ -56,14 +52,14 @@ updateFillable = (row, column) => {
     // blockMoreFillables flag tells us whether we've already dealth with this cell this round (i.e. click), so that we don't go back and forth forever!
 
     // Look at self
-    if (gridArr[row][column].css("background-color") === clickedColor && !gridArr[row][column].hasClass("blockMoreFillables")) {
+    if (gridArr[row][column].css("background-color") === activeColor && !gridArr[row][column].hasClass("blockMoreFillables")) {
         gridArr[row][column].addClass("fillable blockMoreFillables");
         console.log(`At row:${row} column:${column} SELF has been updated to fillable`);
     }
 
     // Look right
     if (column < (gridSize - 1)) {
-        if (gridArr[row][column + 1].css("background-color") === clickedColor && !gridArr[row][column + 1].hasClass("blockMoreFillables")) {
+        if (gridArr[row][column + 1].css("background-color") === activeColor && !gridArr[row][column + 1].hasClass("blockMoreFillables")) {
             updateFillable(row, (column + 1));
             console.log(`At row:${row} column:${column} TO MY RIGHT has called updateFillable()`);
         }
@@ -71,7 +67,7 @@ updateFillable = (row, column) => {
 
     // Look down
     if (row < (gridSize - 1)) {
-        if (gridArr[row + 1][column].css("background-color") === clickedColor && !gridArr[row + 1][column].hasClass("blockMoreFillables")) {
+        if (gridArr[row + 1][column].css("background-color") === activeColor && !gridArr[row + 1][column].hasClass("blockMoreFillables")) {
             updateFillable((row + 1), column);
             console.log(`At row:${row} column:${column} BELOW has called updateFillable()`);
         }
@@ -79,7 +75,7 @@ updateFillable = (row, column) => {
 
     // Look left
     if (column > 0) {
-        if (gridArr[row][column - 1].css("background-color") === clickedColor && !gridArr[row][column - 1].hasClass("blockMoreFillables")) {
+        if (gridArr[row][column - 1].css("background-color") === activeColor && !gridArr[row][column - 1].hasClass("blockMoreFillables")) {
             updateFillable(row, (column - 1));
             console.log(`At row:${row} column:${column} TO MY LEFT has called updateFillable()`);
         }
@@ -87,7 +83,7 @@ updateFillable = (row, column) => {
 
     // Look up
     if (row > 0) {
-        if (gridArr[row - 1][column].css("background-color") === clickedColor && !gridArr[row - 1][column].hasClass("blockMoreFillables")) {
+        if (gridArr[row - 1][column].css("background-color") === activeColor && !gridArr[row - 1][column].hasClass("blockMoreFillables")) {
             updateFillable((row - 1), column);
             console.log(`At row:${row} column:${column} ABOVE has called updateFillable()`);
         }
@@ -99,11 +95,11 @@ updateFillable = (row, column) => {
 
 const cellClickHandler = (event) => {
     // Get the color of the cell the user just clicked
-    clickedColor = event.target.style.backgroundColor;
-    console.log("clicked color:", clickedColor);
+    activeColor = event.target.style.backgroundColor;
+    console.log("clicked color:", activeColor);
 
     // Update the color of fillable cells
-    $(".fillable").css("background-color", clickedColor);
+    $(".fillable").css("background-color", activeColor);
 
     // Update which cells are fillable
     updateFillable(0, 0);

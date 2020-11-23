@@ -22,3 +22,6 @@
 //         }
 //     }
 // }
+
+// Make the top left square "fillable"
+    // topLeftColor = gridArr[0][0].addClass("fillable");
