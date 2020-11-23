@@ -1,8 +1,8 @@
-console.log($);
-
 const possibleColorsArr = ["red", "green", "blue", "yellow", "orange", "purple"];
 let gridArr = [];
 const gridSize = 20;
+let clickedColor = "";
+let topLeftColor = "";
 
 const getRandomColor = (colorArr) => {
     let index = Math.floor(Math.random() * colorArr.length)
@@ -24,6 +24,10 @@ const createGrid = (size) => {
             gridArr[i][j] = $("<div>").addClass("cell").css("background-color", color);
         }
     }
+
+    // Get the top left color
+    topLeftColor = gridArr[0][0].css( "background-color" );
+    console.log("The top left colour is " + topLeftColor);
 }
 
 const renderGrid = (array) => {
@@ -35,10 +39,20 @@ const renderGrid = (array) => {
     }
 }
 
+const cellClickHandler = (event) => {
+    // Get the color of the cell the user just clicked
+    clickedColor = event.target.style.backgroundColor;
+    console.log(clickedColor);
+
+    // Update the top-left cell
+    gridArr[0][0].css("background-color", clickedColor);
+
+}
 
 
 $( () => {
     createGrid(gridSize);
-    renderGrid(gridArr);  
+    renderGrid(gridArr);
+    $(".cell").on("click", cellClickHandler);
 });
 
