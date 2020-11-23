@@ -1,6 +1,6 @@
 const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
 let gridArr = [];
-const gridSize = 10;
+const gridSize = 6;
 let activeColor = "";
 
 const getRandomColor = (colorArr) => {
@@ -8,8 +8,6 @@ const getRandomColor = (colorArr) => {
     let color = colorArr[index];
     return color;
 }
-
-
 
 const createGrid = (size) => {
     // create empty array of the correct size
@@ -47,9 +45,8 @@ const renderGrid = (array) => {
     $(".blockMoreFillables").removeClass("blockMoreFillables");
 }
 
-
 updateFillable = (row, column) => {
-    // blockMoreFillables flag tells us whether we've already dealth with this cell this round (i.e. click), so that we don't go back and forth forever!
+    // blockMoreFillables flag tells us whether we've already dealth with this cell this round (i.e. per click), so that we don't go back and forth forever!
 
     // Look at self
     if (gridArr[row][column].css("background-color") === activeColor && !gridArr[row][column].hasClass("blockMoreFillables")) {
@@ -106,6 +103,13 @@ const cellClickHandler = (event) => {
 
     // Reset blockMoreFillables flag
     $(".blockMoreFillables").removeClass("blockMoreFillables");
+
+    // Check if it's a win
+    if ($(".cell").length === $(".fillable").length){
+        console.log("You win!");
+        $("#result").text("You Win!");
+    }
+    
 }
 
 
