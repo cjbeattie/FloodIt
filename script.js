@@ -1,6 +1,6 @@
 const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
 let gridArr = [];
-const gridSize = 20;
+const gridSize = 5;
 let clickedColor = "";
 let topLeftColor = "";
 
@@ -53,15 +53,22 @@ const cellClickHandler = (event) => {
     // Make neighbouring same-colored cells "fillable"
     let x = 0;
     let y = 0;
-    console.log(gridArr[x][y].css("background-color"));
-    console.log(clickedColor);
 
     while (gridArr[x][y].css("background-color") === clickedColor){
         // loop it in to the fillable cells...
         gridArr[x][y].addClass("fillable");
-        y++;
-        console.log("y just incremented");
+        if(y < (gridSize - 1)){
+            y++;
+            console.log("y just incremented, y is " + y);
+        }
+        else{
+            break;
+        }
+
+        
     }
+    
+    
 
 }
 
