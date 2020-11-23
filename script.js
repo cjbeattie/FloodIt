@@ -1,8 +1,8 @@
 console.log($);
 
-const possibleColorsArr = ["red", "green", "blue", "yellow"];
+const possibleColorsArr = ["red", "green", "blue", "yellow", "orange", "purple"];
 let gridArr = [];
-const gridSize = 10;
+const gridSize = 20;
 
 const getRandomColor = (colorArr) => {
     let index = Math.floor(Math.random() * colorArr.length)
@@ -19,11 +19,8 @@ const createGrid = (size) => {
 
     // Populate array with random-colored divs
     for (let i = 0; i < size; i++){
-        
         for (let j = 0; j < size; j++){
             let color = getRandomColor(possibleColorsArr);
-            if (i === 0){
-            }
             gridArr[i][j] = $("<div>").addClass("cell").css("background-color", color);
         }
     }
