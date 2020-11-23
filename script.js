@@ -10,6 +10,8 @@ const getRandomColor = (colorArr) => {
     return color;
 }
 
+
+
 const createGrid = (size) => {
     // create empty array of the correct size
     gridArr = new Array(size);
@@ -27,10 +29,17 @@ const createGrid = (size) => {
 
     // Get the top left color
     topLeftColor = gridArr[0][0].css("background-color");
+    clickedColor = topLeftColor;
     console.log("The top left colour is " + topLeftColor);
 
     // Make the top left square "fillable"
-    topLeftColor = gridArr[0][0].addClass("fillable");
+    // topLeftColor = gridArr[0][0].addClass("fillable");
+
+    // Update which cells are fillable
+    updateFillable(0, 0);
+
+    // Reset blockMoreFillables flag
+    $(".blockMoreFillables").removeClass("blockMoreFillables");
 }
 
 const renderGrid = (array) => {
@@ -41,7 +50,6 @@ const renderGrid = (array) => {
         }
     }
 }
-
 
 
 updateFillable = (row, column) => {
@@ -86,6 +94,7 @@ updateFillable = (row, column) => {
     }
 
 }
+
 
 
 const cellClickHandler = (event) => {
