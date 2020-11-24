@@ -1,6 +1,6 @@
 const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
 let gridArr = [];
-const gridSize = 20;
+const gridSize = 10;
 let activeColor = "";
 
 const getRandomColor = (colorArr) => {
@@ -20,7 +20,7 @@ const createGrid = (size) => {
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
             let color = getRandomColor(possibleColorsArr);
-            gridArr[i][j] = $("<div>").addClass("cell").css("background-color", color);
+            gridArr[i][j] = $("<div>").addClass("cell").css("background-color", color).on("click", cellClickHandler);
         }
     }
 
@@ -116,5 +116,5 @@ const cellClickHandler = (event) => {
 $(() => {
     createGrid(gridSize);
     renderGrid(gridArr);
-    $(".cell").on("click", cellClickHandler);
+    
 });
