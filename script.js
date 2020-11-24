@@ -27,11 +27,7 @@ const createGrid = () => {
     // Get the top left color
     activeColor = gridArr[0][0].css("background-color");
 
-    
-    
-}
-
-const renderGrid = () => {
+    // RENDER GRID
     for (let i = 0; i < gridArr[0].length; i++) {
         let $row = $("<div>").addClass("row").appendTo($("#gridContainer"));
         for (let j = 0; j < gridArr[0].length; j++) {
@@ -43,9 +39,10 @@ const renderGrid = () => {
     console.log("did I get here??");
     // Reset blockMoreFillables flag
     $(".blockMoreFillables").removeClass("blockMoreFillables");
+    
 }
 
-updateFillable = (row, column) => {
+const updateFillable = (row, column) => {
     // blockMoreFillables flag tells us whether we've already dealth with this cell this round (i.e. per click), so that we don't go back and forth forever!
 
     // Look at self
@@ -88,8 +85,6 @@ updateFillable = (row, column) => {
 
 }
 
-
-
 const cellClickHandler = (event) => {
     // Get the color of the cell the user just clicked
     activeColor = event.target.style.backgroundColor;
@@ -112,9 +107,6 @@ const cellClickHandler = (event) => {
     
 }
 
-
 $(() => {
-    createGrid();
-    renderGrid();
-    
+    createGrid();    
 });
