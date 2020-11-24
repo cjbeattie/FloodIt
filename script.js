@@ -1,13 +1,13 @@
 const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
 let gridArr = [];
-const gridSize = 10;
+let gridSize = 10;
 let activeColor = "";
-let debugEnabled = true;
+let debugEnabled = false;
 
 class Cell {
-    constructor(color, isFillable) {
+    constructor(color) {
         this.color = color;
-        this.isFillable = isFillable;
+        this.isFillable = false;
         this.isChecked = false;
     }
 }
@@ -29,11 +29,8 @@ const createGrid = () => {
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
             let color = getRandomColor();
-            let newCellObject = new Cell(color, false);
+            let newCellObject = new Cell(color);
             gridArr[i][j] = newCellObject;
-            //console.log(newCellObject);
-            // NEED TO ADD THIS BACK IN SOMEWHERE LATER
-            // gridArr[i][j] = $("<div>").addClass("cell").css("background-color", color).on("click", cellClickHandler);
         }
     }
 
@@ -58,7 +55,6 @@ const renderGrid = () => {
             }       
         }
     }
-    console.log("render grid done");  
 }
 
 const updateIsFillable = (row, column) => {
@@ -68,25 +64,22 @@ const updateIsFillable = (row, column) => {
     if (gridArr[row][column].color === activeColor && !gridArr[row][column].isChecked) {
         gridArr[row][column].isFillable = true;
         gridArr[row][column].isChecked = true;
-        // console.log(`gridArr[${row}][${column}].isChecked is ${gridArr[row][column].isChecked}`, gridArr);
-        console.log(`At row:${row} column:${column} SELF has been updated to fillable`);
+        // console.log(`At row:${row} column:${column} SELF has been updated to fillable`);
     }
 
     // Look right
     if (column < (gridSize - 1)) {
         if (gridArr[row][column + 1].color === activeColor && !gridArr[row][column + 1].isChecked) {
             updateIsFillable(row, (column + 1));
-            console.log(`At row:${row} column:${column} TO MY RIGHT has called updateFillable. Here is the active color, that one's color and isChecked status:`, activeColor, gridArr[row][column + 1].color, gridArr[row][column + 1].isChecked);
-        } else {
-            console.log(`At row:${row} column:${column} TO MY RIGHT has called updateFillable but didn't proceed. Here is the active color, that one's color and isChecked status:`, activeColor, gridArr[row][column + 1].color, gridArr[row][column + 1].isChecked)
-        }
+            // console.log(`At row:${row} column:${column} TO MY RIGHT has called updateFillable().`);
+        } 
     }
 
     // Look down
     if (row < (gridSize - 1)) {
         if (gridArr[row + 1][column].color === activeColor && !gridArr[row + 1][column].isChecked) {
             updateIsFillable((row + 1), column);
-            console.log(`At row:${row} column:${column} BELOW has called updateFillable()`);
+            // console.log(`At row:${row} column:${column} BELOW has called updateFillable()`);
         }
     }
 
@@ -94,7 +87,7 @@ const updateIsFillable = (row, column) => {
     if (column > 0) {
         if (gridArr[row][column - 1].color === activeColor && !gridArr[row][column - 1].isChecked) {
             updateIsFillable(row, (column - 1));
-            console.log(`At row:${row} column:${column} TO MY LEFT has called updateFillable()`);
+            // console.log(`At row:${row} column:${column} TO MY LEFT has called updateFillable()`);
         }
     }
 
@@ -102,7 +95,7 @@ const updateIsFillable = (row, column) => {
     if (row > 0) {
         if (gridArr[row - 1][column].color === activeColor && !gridArr[row - 1][column].isChecked) {
             updateIsFillable((row - 1), column);
-            console.log(`At row:${row} column:${column} ABOVE has called updateFillable()`);
+            // console.log(`At row:${row} column:${column} ABOVE has called updateFillable()`);
         }
     }
 }
@@ -131,7 +124,7 @@ const checkWin = () => {
     }
 }
 
-const debugView = () => {
+const initDebugView = () => {
     if (debugEnabled){
         $(".debug").show();
     } else {
@@ -141,7 +134,7 @@ const debugView = () => {
 
 const cellClickHandler = (event) => {
     // Update debug view if enabled
-    if (debugView){
+    if (initDebugView){
         $("#gridContainerPrevious").empty();
         $("#gridContainer").clone().appendTo($("#gridContainerPrevious"));
     }
@@ -164,10 +157,24 @@ const cellClickHandler = (event) => {
     checkWin();
 }
 
-$(() => {
+const newGameClickHandler = () => {
+    gridSize = $("#gridSize").val();
+    newGame();
+}
+
+const newGame = () => {
     createGrid();
     updateIsFillable(0, 0);
     renderGrid();
     resetIsChecked();
-    debugView();
+    initDebugView();
+}
+
+const initGame = () => {
+    newGame();
+    $("#newGame").on("click", newGameClickHandler);
+}
+
+$(() => {
+    initGame();
 });
