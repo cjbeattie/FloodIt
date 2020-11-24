@@ -2,6 +2,7 @@ const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(
 let gridArr = [];
 const gridSize = 10;
 let activeColor = "";
+let debugEnabled = true;
 
 class Cell {
     constructor(color, isFillable) {
@@ -130,7 +131,21 @@ const checkWin = () => {
     }
 }
 
+const debugView = () => {
+    if (debugEnabled){
+        $(".debug").show();
+    } else {
+        $(".debug").hide();
+    }
+}
+
 const cellClickHandler = (event) => {
+    // Update debug view if enabled
+    if (debugView){
+        $("#gridContainerPrevious").empty();
+        $("#gridContainer").clone().appendTo($("#gridContainerPrevious"));
+    }
+
     // Get the color of the cell the user just clicked, remove the spaces in the result to prevent issues with rgb(0, 0, 0) vs rgb(0,0,0)
     activeColor = event.target.style.backgroundColor.split(" ").join("");
     console.log("clicked color:", activeColor);
@@ -154,4 +169,5 @@ $(() => {
     updateIsFillable(0, 0);
     renderGrid();
     resetIsChecked();
+    debugView();
 });
