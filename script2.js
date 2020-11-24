@@ -45,7 +45,7 @@ const initGrid = () => {
         }
     }
     // Update which cells are fillable
-    updateFillable(0, 0);
+    updateIsFillable(0, 0);
     console.log("did I get here??");
     // Reset blockMoreFillables flag
     $(".blockMoreFillables").removeClass("blockMoreFillables");
@@ -64,7 +64,7 @@ const updateFillable = (row, column) => {
     // Look right
     if (column < (gridSize - 1)) {
         if (gridArr[row][column + 1].css("background-color") === activeColor && !gridArr[row][column + 1].hasClass("blockMoreFillables")) {
-            updateFillable(row, (column + 1));
+            updateIsFillable(row, (column + 1));
             console.log(`At row:${row} column:${column} TO MY RIGHT has called updateFillable()`);
         }
     }
@@ -72,7 +72,7 @@ const updateFillable = (row, column) => {
     // Look down
     if (row < (gridSize - 1)) {
         if (gridArr[row + 1][column].css("background-color") === activeColor && !gridArr[row + 1][column].hasClass("blockMoreFillables")) {
-            updateFillable((row + 1), column);
+            updateIsFillable((row + 1), column);
             console.log(`At row:${row} column:${column} BELOW has called updateFillable()`);
         }
     }
@@ -80,7 +80,7 @@ const updateFillable = (row, column) => {
     // Look left
     if (column > 0) {
         if (gridArr[row][column - 1].css("background-color") === activeColor && !gridArr[row][column - 1].hasClass("blockMoreFillables")) {
-            updateFillable(row, (column - 1));
+            updateIsFillable(row, (column - 1));
             console.log(`At row:${row} column:${column} TO MY LEFT has called updateFillable()`);
         }
     }
@@ -88,7 +88,7 @@ const updateFillable = (row, column) => {
     // Look up
     if (row > 0) {
         if (gridArr[row - 1][column].css("background-color") === activeColor && !gridArr[row - 1][column].hasClass("blockMoreFillables")) {
-            updateFillable((row - 1), column);
+            updateIsFillable((row - 1), column);
             console.log(`At row:${row} column:${column} ABOVE has called updateFillable()`);
         }
     }
@@ -104,7 +104,7 @@ const cellClickHandler = (event) => {
     $(".fillable").css("background-color", activeColor);
 
     // Update which cells are fillable
-    updateFillable(0, 0);
+    updateIsFillable(0, 0);
 
     // Reset blockMoreFillables flag
     $(".blockMoreFillables").removeClass("blockMoreFillables");
@@ -117,5 +117,5 @@ const cellClickHandler = (event) => {
 }
 
 $(() => {
-    initGrid();    
+    createGrid();    
 });
