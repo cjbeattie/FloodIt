@@ -3,23 +3,23 @@ let gridArr = [];
 const gridSize = 10;
 let activeColor = "";
 
-const getRandomColor = (colorArr) => {
-    let index = Math.floor(Math.random() * colorArr.length)
-    let color = colorArr[index];
+const getRandomColor = () => {
+    let index = Math.floor(Math.random() * possibleColorsArr.length)
+    let color = possibleColorsArr[index];
     return color;
 }
 
-const createGrid = (size) => {
+const createGrid = () => {
     // create empty array of the correct size
-    gridArr = new Array(size);
-    for (let i = 0; i < size; i++) {
-        gridArr[i] = new Array(size);
+    gridArr = new Array(gridSize);
+    for (let i = 0; i < gridSize; i++) {
+        gridArr[i] = new Array(gridSize);
     }
 
     // Populate array with random-colored divs
-    for (let i = 0; i < size; i++) {
-        for (let j = 0; j < size; j++) {
-            let color = getRandomColor(possibleColorsArr);
+    for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+            let color = getRandomColor();
             gridArr[i][j] = $("<div>").addClass("cell").css("background-color", color).on("click", cellClickHandler);
         }
     }
@@ -31,11 +31,11 @@ const createGrid = (size) => {
     
 }
 
-const renderGrid = (array) => {
-    for (let i = 0; i < array[0].length; i++) {
+const renderGrid = () => {
+    for (let i = 0; i < gridArr[0].length; i++) {
         let $row = $("<div>").addClass("row").appendTo($("#gridContainer"));
-        for (let j = 0; j < array[0].length; j++) {
-            array[i][j].appendTo($($row));
+        for (let j = 0; j < gridArr[0].length; j++) {
+            gridArr[i][j].appendTo($($row));
         }
     }
     // Update which cells are fillable
@@ -114,7 +114,7 @@ const cellClickHandler = (event) => {
 
 
 $(() => {
-    createGrid(gridSize);
-    renderGrid(gridArr);
+    createGrid();
+    renderGrid();
     
 });
