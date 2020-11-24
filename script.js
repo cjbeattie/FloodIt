@@ -9,7 +9,7 @@ const getRandomColor = () => {
     return color;
 }
 
-const createGrid = () => {
+const initGrid = () => {
     // create empty array of the correct size
     gridArr = new Array(gridSize);
     for (let i = 0; i < gridSize; i++) {
@@ -104,9 +104,8 @@ const cellClickHandler = (event) => {
         console.log("You win!");
         $("#result").text("You Win!");
     }
-    
 }
 
 $(() => {
-    createGrid();    
+    initGrid();    
 });
