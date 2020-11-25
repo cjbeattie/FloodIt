@@ -177,6 +177,7 @@ const newGame = () => {
     renderGrid();
     resetIsChecked();
     initDebugView();
+    $("#result").text("");
 }
 
 const initGame = () => {
