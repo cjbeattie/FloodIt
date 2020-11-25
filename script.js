@@ -1,4 +1,5 @@
-const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
+const colorBank = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
+let possibleColorsArr = [];
 let gridArr = [];
 let gridSize = null;
 let activeColor = "";
@@ -161,8 +162,16 @@ const newGameClickHandler = () => {
     newGame();
 }
 
+updatePossibleColorsArr = () => {
+    possibleColorsArr = [];
+    for (let i = 0; i < $("#numColors").val(); i++){
+        possibleColorsArr.push(colorBank[i]);
+    }
+}
+
 const newGame = () => {
     gridSize = $("#gridSize").val();
+    updatePossibleColorsArr();
     createGrid();
     updateIsFillable(0, 0);
     renderGrid();
