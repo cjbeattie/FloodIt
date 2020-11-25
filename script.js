@@ -163,6 +163,7 @@ const newGameClickHandler = () => {
     if (isConfirmed) {
         newGame();
     }
+    //$("#confirm").dialog("open");
 }
 
 updatePossibleColorsArr = () => {
@@ -181,11 +182,13 @@ const newGame = () => {
     resetIsChecked();
     initDebugView();
     $("#result").text("");
+    
 }
 
 const initGame = () => {
     newGame();
     $("#newGame").on("click", newGameClickHandler);
+    // $("#confirm").dialog({autoOpen: false});
 }
 
 $(() => {
