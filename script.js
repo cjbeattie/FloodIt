@@ -158,8 +158,11 @@ const cellClickHandler = (event) => {
     checkWin();
 }
 
-const newGameClickHandler = () => {
-    newGame();
+const newGameClickHandler = () => { 
+    let isConfirmed = confirm("Are you sure you want to start a new game?");
+    if (isConfirmed) {
+        newGame();
+    }
 }
 
 updatePossibleColorsArr = () => {
