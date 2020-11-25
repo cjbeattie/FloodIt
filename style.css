@@ -25,6 +25,13 @@ h2 {
     font-size: 30px;
 }
 
+p {
+    font-family: 'Abel', sans-serif;
+    color: rgb(78, 78, 78);
+    font-size: 17px;
+    margin: 10px;
+}
+
 label {
     font-family: 'Abel', sans-serif;
     color: rgb(0, 0, 0);
