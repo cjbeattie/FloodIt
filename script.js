@@ -3,7 +3,7 @@ let possibleColorsArr = [];
 let gridArr = [];
 let gridSize = null;
 let activeColor = "";
-let debugEnabled = false;
+let debugEnabled = true;
 
 class Cell {
     constructor(color) {
