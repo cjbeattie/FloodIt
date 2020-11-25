@@ -1,4 +1,5 @@
-const colorBank = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)", "rgb(0,255,255)", "rgb(80,0,100)"];
+// const colorBank = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)", "rgb(0,255,255)", "rgb(80,0,100)"];
+const colorBank = ["darkpurple", "lightyellow", "darkgreen", "pink", "lightblue", "beige", "red", "darkyellow"];
 let possibleColorsArr = [];
 let gridArr = [];
 let gridSize = null;
@@ -50,9 +51,9 @@ const renderGrid = () => {
         for (let j = 0; j < gridSize; j++) {
             let color = gridArr[i][j].color;
             if (gridArr[i][j].isFillable){
-                $("<div>").addClass("cell").css("background-color", color).addClass("fillable").on("click", cellClickHandler).appendTo($($row));
+                $("<img>").addClass("cell-image fillable").attr({src: "images/" + color + ".jpg", "data-color": color}).on("click", cellClickHandler).appendTo($($row));
             } else {
-                $("<div>").addClass("cell").css("background-color", color).on("click", cellClickHandler).appendTo($($row));
+                $("<img>").addClass("cell-image").attr({src: "images/" + color + ".jpg", "data-color": color}).on("click", cellClickHandler).appendTo($($row));
             }       
         }
     }
@@ -141,8 +142,10 @@ const cellClickHandler = (event) => {
     }
 
     // Get the color of the cell the user just clicked, remove the spaces in the result to prevent issues with rgb(0, 0, 0) vs rgb(0,0,0)
-    activeColor = event.target.style.backgroundColor.split(" ").join("");
+    // OLD: activeColor = event.target.style.backgroundColor.split(" ").join("");
+    activeColor = $(event.target).attr("data-color");
     console.log("clicked color:", activeColor);
+    //console.log(event);
 
     // Update the color property of fillable cells in object
     for (let i = 0; i < gridSize; i++) {
