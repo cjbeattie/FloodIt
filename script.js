@@ -1,6 +1,6 @@
 const possibleColorsArr = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)"];
 let gridArr = [];
-let gridSize = 10;
+let gridSize = null;
 let activeColor = "";
 let debugEnabled = false;
 
@@ -158,11 +158,11 @@ const cellClickHandler = (event) => {
 }
 
 const newGameClickHandler = () => {
-    gridSize = $("#gridSize").val();
     newGame();
 }
 
 const newGame = () => {
+    gridSize = $("#gridSize").val();
     createGrid();
     updateIsFillable(0, 0);
     renderGrid();
