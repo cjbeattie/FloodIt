@@ -258,10 +258,10 @@ const checkWin = () => {
         if (gridFilled){
             $("#result").text("You Win!");
         } else {
-            $("#result").text("You Lose");
+            $("#result").text("You Lose!");
         }
     } else {
-        $("#result").text("You Lose");
+        $("#result").text("You Lose!");
     }
 }
 

@@ -21,6 +21,7 @@ h2 {
     font-family: 'Abel', sans-serif;
     color: rgb(78, 78, 78);
     font-size: 30px;
+    margin: 5px;
 }
 
 p {
@@ -99,8 +100,32 @@ a:hover {
     /* border: 1px solid black; */
 }
 
+#score {
+    margin: 15px 0 5px 0;
+}
+
+#result {
+    font-weight: bold;
+    color: rgb(255, 110, 255);
+}
+
 #attribution {
     font-size: 10px;
 }
 
+@media screen and (max-width: 400px) {
+    /* body {
+      background-color: red;
+    } */
+    #optionsContainer {
+        padding: 2px 0 2px 0;
+    }
+    h2 {
+        font-size: 20px;
+        margin: 5px;
+    }
+    #gridContainer {
+        margin: 10px 0 0 0;
+    }
+  }
 
