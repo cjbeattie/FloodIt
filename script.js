@@ -101,7 +101,7 @@ const newGame = () => {
     $("#result").text("");
 }
 
-updatePossibleColorsArr = () => {
+const updatePossibleColorsArr = () => {
     possibleColorsArr = [];
     for (let i = 0; i < numColors; i++) {
         possibleColorsArr.push(colorBank[i]);
