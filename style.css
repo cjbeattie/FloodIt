@@ -84,6 +84,16 @@ a:hover {
     display: inline-block;
 } */
 
+.ui-dialog {
+    font-family: 'Abel', sans-serif !important;
+
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+    text-align: center;
+    float: none !important;
+} 
+
 #optionsContainer {
     padding: 10px 0 20px 0;
 }

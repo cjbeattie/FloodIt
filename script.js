@@ -48,7 +48,7 @@ const cellClickHandler = (event) => {
     }
 
     let clickedColor = $(event.target).attr("data-color");
-    if (clickedColor !== activeColor){
+    if (clickedColor !== activeColor) {
         updatePlayerMoveCounter();
     }
 
@@ -72,21 +72,47 @@ const cellClickHandler = (event) => {
 }
 
 const newGameClickHandler = () => {
-    let isConfirmed = confirm("Are you sure you want to start a new game?");
-    if (isConfirmed) {
-        newGame();
-    }
-    //$("#confirm").dialog("open");
+    // let isConfirmed = confirm("Are you sure you want to start a new game?");
+    // if (isConfirmed) {
+    //     newGame();
+    // }
+
+
+    // $("#dialog").dialog({
+    //     buttons : {
+    //       "Confirm" : function() {
+    //         console.log("yay");
+    //       },
+    //       "Cancel" : function() {
+    //         $(this).dialog("close");
+    //       }
+    //     }
+    //   });
+    $("#confirm").dialog("open");
 }
 
 
 // FUNCTIONS
 
 const initGame = () => {
+    // Init confirm popup (must happen before newGame() is called)
+    $("#confirm").dialog({ autoOpen: false });
+    $("#confirm").dialog({
+        buttons: [
+            {
+                text: "Cancel",
+                click: function () {
+                    $(this).dialog("close");
+                }
+            },
+            {
+                text: "Yes",
+                click: newGame,
+            }
+        ]
+    });
     newGame();
     $("#newGame").on("click", newGameClickHandler);
-    console.log("Width: " + $(document).width() + "Height: " + $(document).height());
-    // $("#confirm").dialog({autoOpen: false});
 }
 
 const newGame = () => {
@@ -102,6 +128,8 @@ const newGame = () => {
     initDebugView();
     $("#result").text("");
     updateGridCSS();
+    $("#confirm").dialog("close");
+
 
 }
 
@@ -250,12 +278,12 @@ const checkWin = () => {
         }
     }
 
-    if (playerMoveCounter < targetMoves){
-        if (gridFilled){
+    if (playerMoveCounter < targetMoves) {
+        if (gridFilled) {
             $("#result").text("You Win!");
         }
-    } else if (playerMoveCounter === targetMoves){
-        if (gridFilled){
+    } else if (playerMoveCounter === targetMoves) {
+        if (gridFilled) {
             $("#result").text("You Win!");
         } else {
             $("#result").text("You Lose!");
