@@ -120,6 +120,9 @@ a:hover {
     #optionsContainer {
         padding: 2px 0 2px 0;
     }
+    h1 {
+        font-size: 40px;
+    }
     h2 {
         font-size: 20px;
         margin: 5px;
