@@ -235,7 +235,6 @@ const checkWin = () => {
             }
         }
     }
-    console.log("grid filled: " + gridFilled + " playerMoveCounter: " + playerMoveCounter + " targetMoves: " + targetMoves);
 
     if (playerMoveCounter < targetMoves){
         if (gridFilled){
