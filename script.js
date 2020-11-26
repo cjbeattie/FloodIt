@@ -6,7 +6,7 @@
 // DATA
 
 const colorBank = ["darkpurple", "lightyellow", "darkgreen", "pink", "lightblue", "beige", "lightpurple", "darkyellow"];
-let targetMovesLookupTable = {
+const targetMovesLookupTable = {
     // gridSize:  {numberOfColours: targetMoves}
     "2": { "3": 1, "4": 2, "5": 2, "6": 3, "7": 4, "8": 4 },
     "6": { "3": 5, "4": 7, "5": 8, "6": 10, "7": 12, "8": 14 },
@@ -16,6 +16,16 @@ let targetMovesLookupTable = {
     "22": { "3": 19, "4": 26, "5": 32, "6": 39, "7": 45, "8": 52 },
     "26": { "3": 23, "4": 30, "5": 38, "6": 46, "7": 54, "8": 61 }
 };
+const gridSizeToColorsDefaultLookupTable = {
+    // gridSize: numColors
+    "2": 3,
+    "6": 4,
+    "10": 5,
+    "14": 6,
+    "18": 7,
+    "22": 8,
+    "26": 8
+}
 
 // GAME STATE VARIABLES
 
@@ -113,6 +123,7 @@ const initGame = () => {
     });
     newGame();
     $("#newGame").on("click", newGameClickHandler);
+    $("#gridSize").on("change", updateNumColorsSelection);
 }
 
 const newGame = () => {
@@ -129,8 +140,11 @@ const newGame = () => {
     $("#result").text("");
     updateGridCSS();
     $("#confirm").dialog("close");
+}
 
-
+const updateNumColorsSelection = () => {
+    let autoNumColors = gridSizeToColorsDefaultLookupTable[$("#gridSize").val()];
+    $("#numColors").val(autoNumColors);
 }
 
 const updateGridCSS = () => {
@@ -139,8 +153,6 @@ const updateGridCSS = () => {
 
     $("#gridContainer").css("max-width", newContainerWidth);
     $(".cell-image").css("width", newCellWidth);
-
-    console.log(newContainerWidth, newCellWidth);
 }
 
 const updatePossibleColorsArr = () => {
