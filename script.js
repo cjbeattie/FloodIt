@@ -256,4 +256,5 @@ const checkWin = () => {
 
 $(() => {
     initGame();
+    console.log($(".cell"));
 });

@@ -53,6 +53,7 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    cursor: pointer;
 }
 
 a:link {
@@ -66,17 +67,18 @@ a:hover {
 
 .cell-image {
     width: 40px;
+    cursor: pointer;
 }
 
 .row {
     height: 40px;
 }
 
-.cell {
+/* .cell {
     width: 40px;
     height: 40px;
     display: inline-block;
-}
+} */
 
 #optionsContainer {
     padding: 10px 0 20px 0;
