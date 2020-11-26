@@ -1,11 +1,38 @@
-// const colorBank = ["rgb(255,0,0)", "rgb(0,255,0)", "rgb(0,0,255)", "rgb(255,255,0)", "rgb(255,120,0)", "rgb(255,0,255)", "rgb(0,255,255)", "rgb(80,0,100)"];
+// Flood-It
+// Make by Courtney Beattie as part of a student project for General Assembly's Software Engineering Immersive program.
+// A play on the game by Unixpapa: "https://unixpapa.com/floodit/" - there was no peeking at the code!
+
 const colorBank = ["darkpurple", "lightyellow", "darkgreen", "pink", "lightblue", "beige", "red", "darkyellow"];
 
 let possibleColorsArr = [];
 let gridArr = [];
-let gridSize = null;
+let gridSize = 0;
+let numColors = 0;
 let activeColor = "";
 let debugEnabled = false;
+let targetMoves = 0;
+let playerMoveCounter = 0;
+let targetMovesLookupTable = {
+    // gridSize:  {numberOfColours: targetMoves}
+    "2": { "3": 1, "4": 2, "5": 2, "6": 3, "7": 4, "8": 4 },
+    "6": { "3": 5, "4": 7, "5": 8, "6": 10, "7": 12, "8": 14 },
+    "10": { "3": 8, "4": 11, "5": 14, "6": 17, "7": 20, "8": 23 },
+    "14": { "3": 12, "4": 16, "5": 20, "6": 25, "7": 29, "8": 33 },
+    "18": { "3": 16, "4": 21, "5": 26, "6": 32, "7": 37, "8": 42 },
+    "22": { "3": 19, "4": 26, "5": 32, "6": 39, "7": 45, "8": 52 },
+    "26": { "3": 23, "4": 30, "5": 38, "6": 46, "7": 54, "8": 61 }
+};
+
+const initTargetMoves = () => {
+    targetMoves = targetMovesLookupTable[gridSize][numColors];
+    updateScore();
+}
+
+const updateScore = () => {
+    $("#score").text(playerMoveCounter + "/" + targetMoves);
+}
+
+
 
 class Cell {
     constructor(color) {
@@ -51,11 +78,11 @@ const renderGrid = () => {
         let $row = $("<div>").addClass("row").appendTo($("#gridContainer"));
         for (let j = 0; j < gridSize; j++) {
             let color = gridArr[i][j].color;
-            if (gridArr[i][j].isFillable){
-                $("<img>").addClass("cell-image fillable").attr({src: "images/" + color + ".jpg", "data-color": color}).on("click", cellClickHandler).appendTo($($row));
+            if (gridArr[i][j].isFillable) {
+                $("<img>").addClass("cell-image fillable").attr({ src: "images/" + color + ".jpg", "data-color": color }).on("click", cellClickHandler).appendTo($($row));
             } else {
-                $("<img>").addClass("cell-image").attr({src: "images/" + color + ".jpg", "data-color": color}).on("click", cellClickHandler).appendTo($($row));
-            }       
+                $("<img>").addClass("cell-image").attr({ src: "images/" + color + ".jpg", "data-color": color }).on("click", cellClickHandler).appendTo($($row));
+            }
         }
     }
 }
@@ -75,7 +102,7 @@ const updateIsFillable = (row, column) => {
         if (gridArr[row][column + 1].color === activeColor && !gridArr[row][column + 1].isChecked) {
             updateIsFillable(row, (column + 1));
             // console.log(`At row:${row} column:${column} TO MY RIGHT has called updateFillable().`);
-        } 
+        }
     }
 
     // Look down
@@ -103,7 +130,7 @@ const updateIsFillable = (row, column) => {
     }
 }
 
-const resetIsChecked = () => {    
+const resetIsChecked = () => {
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
             gridArr[i][j].isChecked = false;
@@ -112,41 +139,64 @@ const resetIsChecked = () => {
 }
 
 const checkWin = () => {
-    let hasWon = true;
+    let gridFilled = true;
     for (let i = 0; i < gridSize; i++) {
         for (let j = 0; j < gridSize; j++) {
             if (gridArr[i][j].isFillable === false) {
-                hasWon = false;
+                gridFilled = false;
             }
         }
     }
+    console.log("grid filled: " + gridFilled + " playerMoveCounter: " + playerMoveCounter + " targetMoves: " + targetMoves);
 
-    if (hasWon) {
-        console.log("You win!");
-        $("#result").text("You Win!");
+    if (playerMoveCounter < targetMoves){
+        if (gridFilled){
+            $("#result").text("You Win!");
+        }
+    } else if (playerMoveCounter === targetMoves){
+        if (gridFilled){
+            $("#result").text("You Win!");
+        } else {
+            $("#result").text("You Lose");
+        }
+    } else {
+        $("#result").text("You Lose");
     }
+
+    // if (gridFilled) {
+    //     console.log("You win!");
+    //     $("#result").text("You Win!");
+    // }
 }
 
 const initDebugView = () => {
-    if (debugEnabled){
+    if (debugEnabled) {
         $(".debug").show();
     } else {
         $(".debug").hide();
     }
 }
 
+const updatePlayerMoveCounter = () => {
+    playerMoveCounter++;
+    updateScore();
+}
+
 const cellClickHandler = (event) => {
     // Update debug view if enabled
-    if (initDebugView){
+    if (initDebugView) {
         $("#gridContainerPrevious").empty();
         $("#gridContainer").clone().appendTo($("#gridContainerPrevious"));
     }
 
-    // Get the color of the cell the user just clicked, remove the spaces in the result to prevent issues with rgb(0, 0, 0) vs rgb(0,0,0)
-    // OLD: activeColor = event.target.style.backgroundColor.split(" ").join("");
-    activeColor = $(event.target).attr("data-color");
+    let clickedColor = $(event.target).attr("data-color");
+    if (clickedColor !== activeColor){
+        updatePlayerMoveCounter();
+    }
+
+    // Get the color of the cell the user just clicked
+    activeColor = clickedColor;
     console.log("clicked color:", activeColor);
-    //console.log(event);
 
     // Update the color property of fillable cells in object
     for (let i = 0; i < gridSize; i++) {
@@ -162,7 +212,9 @@ const cellClickHandler = (event) => {
     checkWin();
 }
 
-const newGameClickHandler = () => { 
+
+
+const newGameClickHandler = () => {
     let isConfirmed = confirm("Are you sure you want to start a new game?");
     if (isConfirmed) {
         newGame();
@@ -172,21 +224,24 @@ const newGameClickHandler = () => {
 
 updatePossibleColorsArr = () => {
     possibleColorsArr = [];
-    for (let i = 0; i < $("#numColors").val(); i++){
+    for (let i = 0; i < numColors; i++) {
         possibleColorsArr.push(colorBank[i]);
     }
 }
 
 const newGame = () => {
     gridSize = $("#gridSize").val();
+    numColors = $("#numColors").val();
+    playerMoveCounter = 0;
     updatePossibleColorsArr();
     createGrid();
     updateIsFillable(0, 0);
     renderGrid();
+    initTargetMoves();
     resetIsChecked();
     initDebugView();
     $("#result").text("");
-    
+
 }
 
 const initGame = () => {
