@@ -8,11 +8,9 @@
 
 body {
     text-align: center;
-    /* background-image: url('images/background.jpg'); */
 }
 
 h1 {
-    /* border: 1px solid black; */
     margin: 0;
     font-family: 'Abel', sans-serif;
     color: rgb(78, 78, 78);
@@ -44,10 +42,41 @@ select {
     border: 1px solid lightgray;
 }
 
-/* option {
-    /* color: red;
-} */
+button {
+    background-color: #cacaca;
+    font-family: 'Abel', sans-serif;
+    font-size: 17px;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 
+a:link {
+    text-decoration: none;
+    color: purple;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.cell-image {
+    width: 40px;
+}
+
+.row {
+    height: 40px;
+}
+
+.cell {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
 
 #optionsContainer {
     padding: 10px 0 20px 0;
@@ -65,56 +94,8 @@ select {
     /* border: 2px solid black; */
 }
 
-#disclaimer {
+#attribution {
     font-size: 10px;
 }
 
-.cell-image {
-    width: 40px;
-}
-
-.row {
-    height: 40px;
-}
-
-.cell {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-}
-
-button {
-    background-color: #cacaca;
-    font-family: 'Abel', sans-serif;
-    font-size: 17px;
-    border: none;
-    color: rgb(0, 0, 0);
-    padding: 2px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-
-/* unvisited link */
-a:link {
-    text-decoration: none;
-    color: purple;
-
-
-  }
-  
-  /* visited link */
-  a:visited {
-  }
-  
-  /* mouse over link */
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* selected link */
-  a:active {
-
-  }
 
