@@ -84,6 +84,7 @@ const newGameClickHandler = () => {
 const initGame = () => {
     newGame();
     $("#newGame").on("click", newGameClickHandler);
+    console.log("Width: " + $(document).width() + "Height: " + $(document).height());
     // $("#confirm").dialog({autoOpen: false});
 }
 
@@ -99,6 +100,18 @@ const newGame = () => {
     resetIsChecked();
     initDebugView();
     $("#result").text("");
+    updateGridCSS();
+
+}
+
+const updateGridCSS = () => {
+    let newContainerWidth = (40 * gridSize) + "px";
+    let newCellWidth = (1 / gridSize * 100) + "%";
+
+    $("#gridContainer").css("max-width", newContainerWidth);
+    $(".cell-image").css("width", newCellWidth);
+
+    console.log(newContainerWidth, newCellWidth);
 }
 
 const updatePossibleColorsArr = () => {
@@ -256,5 +269,4 @@ const checkWin = () => {
 
 $(() => {
     initGame();
-    console.log($(".cell"));
 });

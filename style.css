@@ -66,12 +66,14 @@ a:hover {
 }
 
 .cell-image {
-    width: 40px;
     cursor: pointer;
 }
 
 .row {
-    height: 40px;
+    /* height: auto; */
+    line-height: 0;
+    /* display: flex; */
+    /* border: 1px solid black; */
 }
 
 /* .cell {
@@ -85,7 +87,7 @@ a:hover {
 }
 
 #optionsItemContainer {
-    margin: 0px 5px;
+    margin: 5px 5px;
     display: inline-block;
 }
 
@@ -93,7 +95,8 @@ a:hover {
     text-align: center;
     display: inline-block;
     box-shadow: 5px 10px 18px #888888;
-    /* border: 2px solid black; */
+    width: 100%;
+    border: 1px solid black;
 }
 
 #attribution {
