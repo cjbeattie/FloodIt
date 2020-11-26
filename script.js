@@ -68,6 +68,7 @@ const cellClickHandler = (event) => {
     renderGrid();
     resetIsChecked();
     checkWin();
+    updateGridCSS();
 }
 
 const newGameClickHandler = () => {
