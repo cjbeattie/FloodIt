@@ -1,24 +1,25 @@
-# GA_Project1_Game
+# Flood-It
 
-## Project Title (temporary): Flood-It
-Based on this game: https://unixpapa.com/floodit/?sz=14&nc=6
+Play it here! https://cjbeattie.github.io/FloodItGame/
 
-### Project concept
+The goal was to make a prettier version of this game: https://unixpapa.com/floodit/?sz=14&nc=6
+
+The code is my own - no reference was made to the original code, for better or for worse.
+
+## Description
 - The game starts as a 14x14 grid, each cell is randomly coloured one of 6 colours.
 - The user clicks on any cell in the grid. The colour of the cell is applied to the cell at the top-left and any other cells adjacent to it that are the same colour. 
 - Any cells that are adjacent to those recently-coloured cells that are the same colour as the new colour, now are part of the group of cells that will be coloured next time (think of it like the flood paintbucket tool in MS paint).
 - The goal is to flood the entire grid in the least number of moves as possible.
-- This Google Play put it well!
+- This Google Play review put it well!
 "Its the MSPaint thing you'd do while bored in computer class where you spraycan a whole bunch of different colors on a page till its all full then use the fill bucket to slowly but surely fill the whole page with one color and they turned it into a game... and I love it!" 
 
 Here is a screenshot from the existing Unixpapa game I linked to above:  
 >![image](https://github.com/cjbeattie/FloodItGame/blob/develop/Documentation/Flood-It-Unixpapa-Screenshot.png)
 
-### MVP
-- Creating the grid (small, e.g. 3x3) and assigning random colours (or letters or numbers)
-- Assigning the top left cells to be "fillable" and the rest to "unfillable"
-- Clicking any "unfillable" cell in the grid turns the "fillable cells" that colour.
-
-### Other features I plan to implement
-- Supporting a larger grid
-- Styling it possibly using images so that it looks a lot nicer than the original.
+## Technologies Used
+No fancy-pants framework is used in this project, it's just practice at vanilla:
+- JavaScript
+- jQuery
+- HTML
+- CSS
