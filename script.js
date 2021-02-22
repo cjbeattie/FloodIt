@@ -1,6 +1,6 @@
 // Flood-It
 // Made by Courtney Beattie as part of a student project for General Assembly's Software Engineering Immersive program.
-// A play on the game by Unixpapa: "https://unixpapa.com/floodit/" - there was no peeking at the code!
+// A play on the game by Unixpapa: "https://unixpapa.com/floodit/" - there was no peeking at the code! 
 
 
 // DATA
