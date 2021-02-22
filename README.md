@@ -18,7 +18,7 @@ Here is a screenshot from the existing Unixpapa game I linked to above:
 >![image](https://github.com/cjbeattie/FloodItGame/blob/develop/Documentation/Flood-It-Unixpapa-Screenshot.png)
 
 ## Technologies Used
-No fancy-pants framework is used in this project, it's just practice at vanilla:
+No front-end framework is used in this project, it's just practice at vanilla:
 - JavaScript
 - jQuery
 - HTML
