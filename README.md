@@ -12,7 +12,7 @@ Based on this game: https://unixpapa.com/floodit/?sz=14&nc=6
 "Its the MSPaint thing you'd do while bored in computer class where you spraycan a whole bunch of different colors on a page till its all full then use the fill bucket to slowly but surely fill the whole page with one color and they turned it into a game... and I love it!" 
 
 Here is a screenshot from the existing Unixpapa game I linked to above:  
->![image](https://git.generalassemb.ly/cbeattie/GA_Project1_Game/blob/master/Documentation/Flood-It-Unixpapa-Screenshot.png)
+>![image](https://github.com/cjbeattie/FloodItGame/blob/develop/Documentation/Flood-It-Unixpapa-Screenshot.png)
 
 ### MVP
 - Creating the grid (small, e.g. 3x3) and assigning random colours (or letters or numbers)
