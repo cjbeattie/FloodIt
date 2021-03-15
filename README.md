@@ -1,3 +1,6 @@
+*A note on all projects: I merged a few Github old accounts into this new "clean" one since the GA course required an annoying mix of Github Enterprise and personal Github accounts. It was confusing and full of other in-class exercise mess. It's why you won't see commits from this account dating prior to February, but if you dig into the projects you can see the work I committed using my other GitHub accounts (cbeattie and cbeattie2).
+All projects here were done in about 5 days so are very much MVPs at this stage, but I will continue to work on them when I get the time.*
+
 # Flood-It
 
 Play it here! https://cjbeattie.github.io/FloodItGame/
