@@ -17,6 +17,10 @@ The code is my own - no reference was made to the original code, for better or f
 - This Google Play review put it well!
 "Its the MSPaint thing you'd do while bored in computer class where you spraycan a whole bunch of different colors on a page till its all full then use the fill bucket to slowly but surely fill the whole page with one color and they turned it into a game... and I love it!" 
 
+### Screenshots
+
+![Flood-It](/Documentation/Flood-It.png)
+
 Here is a screenshot from the existing Unixpapa game I linked to above:  
 >![image](https://github.com/cjbeattie/FloodItGame/blob/develop/Documentation/Flood-It-Unixpapa-Screenshot.png)
 
