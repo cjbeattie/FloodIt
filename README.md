@@ -22,7 +22,7 @@ The code is my own - no reference was made to the original code, for better or f
 ![Flood-It](/Documentation/Flood-It.png)
 
 Here is a screenshot from the existing Unixpapa game I linked to above:  
->![image](https://github.com/cjbeattie/FloodItGame/blob/develop/Documentation/Flood-It-Unixpapa-Screenshot.png)
+>![image](/Documentation/Flood-It-Unixpapa-Screenshot.png)
 
 ## Technologies Used
 No front-end framework is used in this project, it's just practice at vanilla:
